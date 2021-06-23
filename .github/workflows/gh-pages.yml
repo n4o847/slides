@@ -7,10 +7,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      LANG: ja_JP.UTF-8
     steps:
       - uses: actions/checkout@v2
 
-      - uses: KoharaKazuya/marp-cli-action@v1
+      - run: |
+          docker run --rm -v $PWD:/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli -I .
+
+      - run: |
+          docker run --rm --init -v $PWD:/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli -I . --pdf
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
