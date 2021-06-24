@@ -74,8 +74,10 @@ $$
 
 具体的にはそれぞれ
 $$
+\begin{gather*}
 \operatorname{Enc}(K', m) := m ^ {K'} \bmod n, \\
 \operatorname{Dec}(K, c) := c ^ K \bmod n.
+\end{gather*}
 $$
 
 よって $K$ と $K'$ を逆にしても等式が成り立つ。
