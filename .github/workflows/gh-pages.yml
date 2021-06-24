@@ -16,7 +16,7 @@ jobs:
           docker run --rm -v $PWD:/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli -I .
 
       - run: |
-          docker run --rm --init -u root -v $PWD:/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli -I . --pdf
+          npx @marp-team/marp-cli -I . --pdf
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
