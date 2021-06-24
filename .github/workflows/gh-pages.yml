@@ -7,13 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      LANG: ja_JP.UTF-8
     steps:
       - uses: actions/checkout@v2
 
       - run: |
-          docker run --rm -v $PWD:/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli -I .
+          sudo apt-get install fonts-noto
+
+      - run: |
+          npx @marp-team/marp-cli -I .
 
       - run: |
           npx @marp-team/marp-cli -I . --pdf
